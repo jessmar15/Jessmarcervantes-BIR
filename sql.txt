@@ -1,0 +1,13 @@
+SELECT 
+    e.employee,
+    i.date AS time_in_date,
+    i.time_in,
+    o.time_out
+FROM 
+    employee e
+INNER JOIN 
+    timein i ON e.rfid_card = i.rfid_card
+INNER JOIN 
+    timeout o ON e.rfid_card = o.rfid_card AND i.date = o.date
+ORDER BY 
+    e.employee, i.date;
